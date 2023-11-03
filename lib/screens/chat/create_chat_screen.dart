@@ -78,7 +78,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
               Text('내가 연습하고 싶은\n새로운 구화 주제나 상황을\n만들어 보세요',
                   style: FontStyles.titleTextStyle),
               SizedBox(
-                height: 40.h,
+                height: 44.h,
               ),
               Text(
                 "당신의 역할은 무엇인가요?",
@@ -91,6 +91,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
                 onChanged: (value) => setState(() {}),
                 controller: _myRoleTextController,
                 style: textFieldTextStyle,
+                maxLength: 20,
                 maxLines: 1,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
@@ -117,6 +118,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
                 onChanged: (value) => setState(() {}),
                 controller: _otherRoleController,
                 style: textFieldTextStyle,
+                maxLength: 20,
                 maxLines: 1,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
