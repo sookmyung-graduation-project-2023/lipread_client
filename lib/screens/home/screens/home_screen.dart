@@ -5,13 +5,43 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lipread_client/components/base_appbar.dart';
 import 'package:lipread_client/components/base_button.dart';
 import 'package:lipread_client/components/base_prompt.dart';
+import 'package:lipread_client/models/prompt_model.dart';
 import 'package:lipread_client/screens/chat/create_chat_screen.dart';
 import 'package:lipread_client/utilities/colors.dart';
 import 'package:lipread_client/utilities/fonts.dart';
 import 'package:lipread_client/utilities/styles.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late final TabController _tabController;
+
+  final _tabs = [
+    const Tab(text: "공식"),
+    const Tab(text: "비공식"),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(
+      length: _tabs.length,
+      vsync: this,
+      initialIndex: 0,
+    );
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +62,18 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Column(
-            children: [
-              SizedBox(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            SliverToBoxAdapter(
+              child: SizedBox(
                 height: 20.h,
               ),
-              Row(
+            ),
+            SliverToBoxAdapter(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -52,10 +85,14 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
                 height: 24.h,
               ),
-              BaseButton(
+            ),
+            SliverToBoxAdapter(
+              child: BaseButton(
                   text: "새로운 주제나 상황 만들기",
                   onPressed: () {
                     Navigator.push(
@@ -63,125 +100,165 @@ class HomeScreen extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => const CreateChatScreen()));
                   }),
-              SizedBox(
-                height: 40.h,
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 44.h,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+            ),
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: _StickyHeaderDelegate(
+                child: Container(
+                  color: Colors.white,
+                  height: 30.0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "공식",
-                        style: TextStyle(
-                          color: AppColor.g500,
-                          fontSize: 18.sp,
-                          fontFamily: pretendardFont,
-                          fontVariations: const [
-                            FontVariation('wght', 600),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      Text(
-                        "비공식",
-                        style: TextStyle(
-                          color: AppColor.primary,
+                      TabBar(
+                        controller: _tabController,
+                        tabs: _tabs,
+                        isScrollable: true,
+                        labelColor: AppColor.primary,
+                        labelStyle: TextStyle(
                           fontSize: 18.sp,
                           fontFamily: pretendardFont,
                           fontVariations: const [
                             FontVariation('wght', 700),
                           ],
                         ),
+                        unselectedLabelColor: AppColor.g500,
+                        unselectedLabelStyle: TextStyle(
+                          fontSize: 18.sp,
+                          fontFamily: pretendardFont,
+                          fontVariations: const [
+                            FontVariation('wght', 600),
+                          ],
+                        ),
+                        indicatorColor: AppColor.primary,
+                        indicatorWeight: 2,
+                        indicatorSize: TabBarIndicatorSize.label,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 0,
+                          vertical: 0,
+                        ),
+                        labelPadding: const EdgeInsets.symmetric(
+                          horizontal: 0,
+                          vertical: 0,
+                        ),
+                        indicatorPadding: const EdgeInsets.all(2),
+                        overlayColor:
+                            const MaterialStatePropertyAll(Colors.transparent),
+                      ),
+                      OutlinedButton(
+                        onPressed: () {},
+                        style: OutlinedButton.styleFrom(
+                          minimumSize: Size.zero,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10.w,
+                            vertical: 8.h,
+                          ),
+                          side:
+                              const BorderSide(width: 1, color: AppColor.g300),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(200).r,
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.sort_rounded,
+                              size: 20.w,
+                              weight: 300,
+                              color: AppColor.g500,
+                            ),
+                            SizedBox(
+                              width: 4.w,
+                            ),
+                            const Text(
+                              "최신 순",
+                              style: TextStyle(
+                                color: AppColor.g600,
+                                fontSize: 14,
+                                fontFamily: pretendardFont,
+                                fontVariations: [
+                                  FontVariation('wght', 500),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                  OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      minimumSize: Size.zero,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 10.w,
-                        vertical: 8.h,
-                      ),
-                      side: const BorderSide(width: 1, color: AppColor.g300),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(200).r,
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.sort_rounded,
-                          size: 20.w,
-                          weight: 300,
-                          color: AppColor.g500,
-                        ),
-                        SizedBox(
-                          width: 4.w,
-                        ),
-                        const Text(
-                          "최신 순",
-                          style: TextStyle(
-                            color: AppColor.g600,
-                            fontSize: 14,
-                            fontFamily: pretendardFont,
-                            fontVariations: [
-                              FontVariation('wght', 500),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 16.h,
+              ),
+            ),
+            SliverFillRemaining(
+              child: TabBarView(
+                physics: const ClampingScrollPhysics(),
+                controller: _tabController,
+                children: [
+                  ListView.separated(
+                    physics: const ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    primary: false,
+                    itemCount: 20,
+                    itemBuilder: (context, index) {
+                      final PromptModel prompt = PromptModel();
+                      return BasePrompt(
+                        emoji: prompt.emoji,
+                        count: prompt.count,
+                        tags: prompt.tags,
+                        text: prompt.subject,
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return SizedBox(
+                        height: 12.h,
+                      );
+                    },
                   ),
+                  const Center(child: Text('Content for Tab 2')),
                 ],
               ),
-              SizedBox(
-                height: 20.h,
-              ),
-              const BasePrompt(
-                emoji: "🍪",
-                count: 10,
-                tags: ["파자마 파티", "과자", "친구"],
-                text: '친구의 파자마 파티에서 같이 과자를 먹기로 했는데 내가 과자를 사오지 않았다.',
-              ),
-              SizedBox(
-                height: 12.h,
-              ),
-              const BasePrompt(
-                emoji: "🎓",
-                count: 15,
-                tags: ["파자마 파티", "과자", "친구"],
-                text: '대학원생과 교수의 첫 면담. 교수가 대학원생에게 관심 분야와 능력, 진로 계획에 대해 묻는다.',
-              ),
-              SizedBox(
-                height: 12.h,
-              ),
-              const BasePrompt(
-                emoji: "🍿",
-                count: 100,
-                tags: ["파자마 파티", "과자", "친구"],
-                text: '영화관에서 영화 티켓을 예매하는데 직원은 신작 영화를 나에게 소개해준다.',
-              ),
-              SizedBox(
-                height: 12.h,
-              ),
-              const BasePrompt(
-                emoji: "🧀",
-                count: 0,
-                tags: ["파자마 파티", "과자", "친구"],
-                text: '마트에서 치즈를 사며 카드 결제를 한다.',
-              ),
-              SizedBox(
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
                 height: 40.h,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
+  }
+}
+
+class _StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
+  final Widget child;
+
+  _StickyHeaderDelegate({required this.child});
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return child;
+  }
+
+  @override
+  double get maxExtent => 30.0;
+
+  @override
+  double get minExtent => 30.0;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return true;
   }
 }
