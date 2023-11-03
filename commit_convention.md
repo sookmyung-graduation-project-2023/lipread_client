@@ -1,7 +1,7 @@
 ## 커밋 컨벤션
 ### 구조
 ```
-type/#issue number: subject
+[type] #issue number: subject
 
 body
  ```
