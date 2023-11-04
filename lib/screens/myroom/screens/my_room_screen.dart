@@ -82,26 +82,56 @@ class MyRoomScreen extends StatelessWidget {
               SizedBox(
                 height: 16.h,
               ),
-              ListView.separated(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                primary: false,
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  final PromptModel prompt = PromptModel();
-                  return BasePrompt(
-                    emoji: prompt.emoji,
-                    count: prompt.count,
-                    tags: prompt.tags,
-                    text: prompt.subject,
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return SizedBox(
-                    height: 12.h,
-                  );
-                },
-              ),
+              true
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(vertical: 80.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            "assets/images/img_folder.png",
+                            opacity: const AlwaysStoppedAnimation(.5),
+                            width: 64.w,
+                          ),
+                          SizedBox(
+                            height: 8.h,
+                          ),
+                          Text(
+                            "아직 연습한 구화가 없습니다.\n새로운 구화 연습을 시작해 보세요!",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: AppColor.g400,
+                              fontSize: 16.sp,
+                              fontFamily: pretendardFont,
+                              fontVariations: const [
+                                FontVariation('wght', 600),
+                              ],
+                              height: 1.6,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      primary: false,
+                      itemCount: 8,
+                      itemBuilder: (context, index) {
+                        final PromptModel prompt = PromptModel();
+                        return BasePrompt(
+                          emoji: prompt.emoji,
+                          count: prompt.count,
+                          tags: prompt.tags,
+                          text: prompt.subject,
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return SizedBox(
+                          height: 12.h,
+                        );
+                      },
+                    ),
               SizedBox(
                 height: 40.h,
               ),
