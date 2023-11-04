@@ -7,6 +7,7 @@ import 'package:lipread_client/components/base_button.dart';
 import 'package:lipread_client/components/base_prompt.dart';
 import 'package:lipread_client/models/prompt_model.dart';
 import 'package:lipread_client/screens/chat/create_chat_screen.dart';
+import 'package:lipread_client/screens/search/screens/search_screen.dart';
 import 'package:lipread_client/utilities/colors.dart';
 import 'package:lipread_client/utilities/fonts.dart';
 import 'package:lipread_client/utilities/styles.dart';
@@ -50,12 +51,16 @@ class _HomeScreenState extends State<HomeScreen>
         "홈",
         actions: <Widget>[
           IconButton(
-            icon: const Icon(
-              Icons.search_rounded,
-              weight: 400,
-            ),
-            onPressed: () {},
-          ),
+              icon: const Icon(
+                Icons.search_rounded,
+                weight: 400,
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SearchScreen()));
+              }),
           IconButton(
             icon: const Icon(Icons.notifications_outlined),
             onPressed: () {},
@@ -78,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('내가 연습하고 싶은\n구화 주제나 상황을\n찾아볼까요?',
-                      style: FontStyles.titleTextStyle),
+                      style: FontStyles.headline1TextStyle),
                   Image.asset(
                     "assets/images/img_rocket.png",
                     width: 140.w,
