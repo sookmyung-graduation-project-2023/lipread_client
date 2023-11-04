@@ -22,7 +22,7 @@ class BaseDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10.r)),
       ),
-      insetPadding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 40.h),
+      insetPadding: EdgeInsets.symmetric(horizontal: 72.w, vertical: 40.h),
       contentPadding: EdgeInsets.only(right: 20.w, left: 20.w, top: 8.h),
       title: Text(
         title,
