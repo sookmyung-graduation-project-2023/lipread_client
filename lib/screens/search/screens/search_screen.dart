@@ -20,6 +20,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _textController = TextEditingController();
   final bool test = false;
+  final String text = "#파자마";
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     borderRadius: BorderRadius.circular(10.r),
                   ),
                   child: Text(
-                    "키워드로 검색할 때는 #을 붙여 검색해 주세요",
+                    "키워드로만 검색할 때는 #을 붙여 검색해 주세요",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: AppColor.g400,
@@ -75,9 +76,27 @@ class _SearchScreenState extends State<SearchScreen> {
               SizedBox(
                 height: 40.h,
               ),
-              Text(
-                "검색 결과",
-                style: FontStyles.headline2TextStyle,
+              Row(
+                children: [
+                  Text(
+                    text,
+                    style: TextStyle(
+                      color: AppColor.primary,
+                      fontSize: 18.sp,
+                      fontFamily: pretendardFont,
+                      fontVariations: const [
+                        FontVariation('wght', 700),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: 4.w,
+                  ),
+                  Text(
+                    "검색 결과",
+                    style: FontStyles.headline2TextStyle,
+                  ),
+                ],
               ),
               SizedBox(
                 height: 20.h,
