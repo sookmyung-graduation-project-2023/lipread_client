@@ -22,7 +22,7 @@ class _BaseScaffoldState extends State<BaseScaffold> {
 
   final List<Widget> _screenList = [
     const HomeScreen(),
-    MyRoomScreen(),
+    const MyRoomScreen(),
     const AccountScreen(),
   ];
 

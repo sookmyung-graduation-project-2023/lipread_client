@@ -51,13 +51,13 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
               TextField(
                 onChanged: (value) => setState(() {}),
                 controller: _myRoleTextController,
-                style: FontStyles.textFieldTextStyle,
+                style: FontStyles.textFieldSingleTextStyle,
                 maxLength: 20,
                 maxLines: 1,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
                   hintText: 'ex. 빵집에 케이크를 사러간 손님',
-                  hintStyle: FontStyles.textFieldHintTextStyle,
+                  hintStyle: FontStyles.textFieldSingleHintTextStyle,
                   filled: true,
                   fillColor: Colors.white,
                   focusedBorder: AppStyles.textFieldStyle,
@@ -78,13 +78,13 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
               TextField(
                 onChanged: (value) => setState(() {}),
                 controller: _otherRoleController,
-                style: FontStyles.textFieldTextStyle,
+                style: FontStyles.textFieldSingleTextStyle,
                 maxLength: 20,
                 maxLines: 1,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
                   hintText: 'ex. 빵집 직원',
-                  hintStyle: FontStyles.textFieldHintTextStyle,
+                  hintStyle: FontStyles.textFieldSingleHintTextStyle,
                   filled: true,
                   fillColor: Colors.white,
                   focusedBorder: AppStyles.textFieldStyle,
@@ -105,13 +105,13 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
               TextField(
                 onChanged: (value) => setState(() {}),
                 controller: _subjectTextController,
-                style: FontStyles.textFieldTextStyle,
+                style: FontStyles.textFieldMultiTextStyle,
                 maxLength: 100,
                 maxLines: 5,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
                   hintText: 'ex. 일주일 이내로 가져올 수 있는 케이크를 주문한다',
-                  hintStyle: FontStyles.textFieldHintTextStyle,
+                  hintStyle: FontStyles.textFieldMultiHintTextStyle,
                   filled: true,
                   fillColor: Colors.white,
                   focusedBorder: AppStyles.textFieldStyle,

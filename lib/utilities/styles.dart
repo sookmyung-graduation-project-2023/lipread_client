@@ -17,11 +17,11 @@ class FontStyles {
   );
 
   static final headline2TextStyle = TextStyle(
-    color: AppColor.g600,
+    color: AppColor.g700,
     fontSize: 18.sp,
     fontFamily: pretendardFont,
     fontVariations: const [
-      FontVariation('wght', 600),
+      FontVariation('wght', 700),
     ],
   );
 
@@ -34,7 +34,25 @@ class FontStyles {
     ],
   );
 
-  static final TextStyle textFieldTextStyle = TextStyle(
+  static final TextStyle textFieldSingleTextStyle = TextStyle(
+    color: AppColor.g700,
+    fontSize: 16.sp,
+    fontFamily: pretendardFont,
+    fontVariations: const [
+      FontVariation('wght', 600),
+    ],
+  );
+
+  static final TextStyle textFieldSingleHintTextStyle = TextStyle(
+    color: AppColor.g400,
+    fontSize: 16.sp,
+    fontFamily: pretendardFont,
+    fontVariations: const [
+      FontVariation('wght', 500),
+    ],
+  );
+
+  static final TextStyle textFieldMultiTextStyle = TextStyle(
     color: AppColor.g700,
     fontSize: 16.sp,
     fontFamily: pretendardFont,
@@ -43,7 +61,8 @@ class FontStyles {
     ],
     height: 1.6,
   );
-  static final TextStyle textFieldHintTextStyle = TextStyle(
+
+  static final TextStyle textFieldMultiHintTextStyle = TextStyle(
     color: AppColor.g400,
     fontSize: 16.sp,
     fontFamily: pretendardFont,
@@ -64,5 +83,5 @@ class AppStyles {
   );
 
   static final EdgeInsets textFieldEdgeInsets =
-      EdgeInsets.symmetric(vertical: 20.w, horizontal: 20.h);
+      EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w);
 }

@@ -35,8 +35,11 @@ class _SearchScreenState extends State<SearchScreen> {
                 height: 28.h,
               ),
               Container(
-                  color: AppColor.g100,
                   padding: EdgeInsets.symmetric(vertical: 12.h),
+                  decoration: BoxDecoration(
+                    color: AppColor.g100,
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
                   child: Text(
                     "키워드로 검색할 때는 #을 붙여 검색해 주세요",
                     textAlign: TextAlign.center,
@@ -56,12 +59,12 @@ class _SearchScreenState extends State<SearchScreen> {
               TextField(
                 onChanged: (value) => setState(() {}),
                 controller: _textController,
-                style: FontStyles.textFieldTextStyle,
+                style: FontStyles.textFieldSingleTextStyle,
                 maxLines: 1,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
                   hintText: '검색어를 입력해 주세요',
-                  hintStyle: FontStyles.textFieldHintTextStyle,
+                  hintStyle: FontStyles.textFieldSingleHintTextStyle,
                   filled: true,
                   fillColor: Colors.white,
                   focusedBorder: AppStyles.textFieldStyle,

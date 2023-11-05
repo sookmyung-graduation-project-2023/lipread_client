@@ -160,7 +160,7 @@ class PromptScreen extends StatelessWidget {
                     title: "나의 역할",
                     content: Text(
                       "파자마 파티에 초대된 사람",
-                      style: FontStyles.textFieldTextStyle,
+                      style: FontStyles.textFieldMultiTextStyle,
                     ),
                   ),
                   margin,
@@ -168,7 +168,7 @@ class PromptScreen extends StatelessWidget {
                     title: "상대방의 역할",
                     content: Text(
                       "친구",
-                      style: FontStyles.textFieldTextStyle,
+                      style: FontStyles.textFieldMultiTextStyle,
                     ),
                   ),
                   margin,
@@ -176,7 +176,7 @@ class PromptScreen extends StatelessWidget {
                     title: "주제 및 상황",
                     content: Text(
                       "친구의 파자마 파티에서 같이 과자를 먹기로 했는데 내가 과자를 사오지 않았다. 친구는 나에게 질책을 하고 나는 친구에게 사과를 한다.",
-                      style: FontStyles.textFieldTextStyle,
+                      style: FontStyles.textFieldMultiTextStyle,
                     ),
                   ),
                   margin,
