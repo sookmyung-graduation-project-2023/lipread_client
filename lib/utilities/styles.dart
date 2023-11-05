@@ -71,6 +71,26 @@ class FontStyles {
     ],
     height: 1.6,
   );
+
+  static final TextStyle dialogTitleTextStyle = TextStyle(
+    color: AppColor.g900,
+    fontSize: 18.sp,
+    fontFamily: pretendardFont,
+    fontVariations: const [
+      FontVariation('wght', 700),
+    ],
+    height: 1.6,
+  );
+
+  static final TextStyle dialogContentTextStyle = TextStyle(
+    color: AppColor.g700,
+    fontSize: 16.sp,
+    fontFamily: pretendardFont,
+    fontVariations: const [
+      FontVariation('wght', 500),
+    ],
+    height: 1.6,
+  );
 }
 
 class AppStyles {

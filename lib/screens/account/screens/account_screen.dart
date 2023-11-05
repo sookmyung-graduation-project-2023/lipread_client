@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lipread_client/components/base_appbar.dart';
+import 'package:lipread_client/components/base_dialog.dart';
 import 'package:lipread_client/components/base_dialog_text_button.dart';
 import 'package:lipread_client/utilities/colors.dart';
 import 'package:lipread_client/utilities/fonts.dart';
@@ -136,9 +137,34 @@ class _AccountScreenState extends State<AccountScreen> {
               SizedBox(
                 height: 60.h,
               ),
-              Text(
-                "크레딧 사용량",
-                style: FontStyles.headline2TextStyle,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "크레딧 사용량",
+                    style: FontStyles.headline2TextStyle,
+                  ),
+                  SizedBox(
+                    width: 8.w,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return const BaseDialog(
+                                title: "크레딧이 무엇인가요?",
+                                content:
+                                    "크레딧이란 구화 연습을 진행할 때 상대방이 말한 단어의 개수에요. 모든 크레딧을 소진하면 갱신되기 전까지 구화 연습을 더 이상 진행할 수 없어요.");
+                          });
+                    },
+                    child: Icon(
+                      Icons.info_rounded,
+                      color: AppColor.g400,
+                      size: 20.w,
+                    ),
+                  )
+                ],
               ),
               SizedBox(
                 height: 20.h,
