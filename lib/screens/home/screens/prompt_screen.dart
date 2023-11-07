@@ -32,7 +32,7 @@ class PromptScreen extends StatelessWidget {
               child: Text(
                 "삭제",
                 style: TextStyle(
-                  color: AppColor.g600,
+                  color: AppColor.g700,
                   fontSize: 16.sp,
                   fontFamily: pretendardFont,
                   fontVariations: const [

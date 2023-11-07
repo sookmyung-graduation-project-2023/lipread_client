@@ -34,7 +34,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(
-                height: 20.h,
+                height: 28.h,
               ),
               Text('내가 연습하고 싶은\n새로운 구화 주제나 상황을\n만들어 보세요',
                   style: FontStyles.headline1TextStyle),

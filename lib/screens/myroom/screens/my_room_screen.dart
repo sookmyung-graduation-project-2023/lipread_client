@@ -8,6 +8,7 @@ import 'package:lipread_client/components/base_emptydata.dart';
 import 'package:lipread_client/components/base_prompt.dart';
 import 'package:lipread_client/models/prompt_model.dart';
 import 'package:lipread_client/screens/chat/create_chat_screen.dart';
+import 'package:lipread_client/screens/myroom/screens/bookmark_screen.dart';
 import 'package:lipread_client/utilities/colors.dart';
 import 'package:lipread_client/utilities/fonts.dart';
 import 'package:lipread_client/utilities/styles.dart';
@@ -26,7 +27,12 @@ class MyRoomScreen extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.bookmark_outline_rounded),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BookmarkScreen()));
+            },
           ),
           IconButton(
             icon: const Icon(Icons.add_circle_outline_rounded),
