@@ -24,7 +24,7 @@ class BaseTag extends StatelessWidget {
         borderRadius: BorderRadius.circular(6.r),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
         child: Text(
           text,
           textAlign: TextAlign.center,

@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen>
                   Text('내가 연습하고 싶은\n구화 주제나 상황을\n찾아볼까요?',
                       style: FontStyles.headline1TextStyle),
                   Image.asset(
-                    "assets/images/img_rocket.png",
+                    "assets/images/img_chat.png",
                     width: 140.w,
                   ),
                 ],

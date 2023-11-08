@@ -9,12 +9,16 @@ class BaseButton extends StatelessWidget {
   final String text;
   final void Function() onPressed;
   final bool isDisable;
+  final Color? backgroundColor;
+  final Color? textColor;
 
   const BaseButton({
     super.key,
     required this.text,
     required this.onPressed,
     this.isDisable = false,
+    this.backgroundColor,
+    this.textColor,
   });
 
   @override
@@ -23,9 +27,9 @@ class BaseButton extends StatelessWidget {
       onPressed: !isDisable ? onPressed : null,
       style: TextButton.styleFrom(
         minimumSize: Size(382.w, 0.h),
-        padding: EdgeInsets.symmetric(vertical: 16.h),
-        backgroundColor: AppColor.primary,
-        foregroundColor: Colors.white,
+        padding: EdgeInsets.symmetric(vertical: 20.h),
+        backgroundColor: backgroundColor ?? AppColor.primary,
+        foregroundColor: textColor ?? Colors.white,
         disabledBackgroundColor: AppColor.g200,
         disabledForegroundColor: AppColor.g300,
         shape: RoundedRectangleBorder(
@@ -36,7 +40,7 @@ class BaseButton extends StatelessWidget {
         text,
         style: TextStyle(
           fontFamily: AppFonts.pretendardFont,
-          fontSize: 18.sp,
+          fontSize: 16.sp,
           fontVariations: const [
             FontVariation('wght', 700),
           ],
