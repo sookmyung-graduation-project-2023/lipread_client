@@ -29,7 +29,7 @@ class BaseTag extends StatelessWidget {
           text,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontFamily: pretendardFont,
+            fontFamily: AppFonts.pretendardFont,
             fontSize: 16.sp,
             fontVariations: const [
               FontVariation('wght', 600),

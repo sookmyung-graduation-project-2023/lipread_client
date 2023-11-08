@@ -33,7 +33,7 @@ class EmptyData extends StatelessWidget {
             style: TextStyle(
               color: AppColor.g400,
               fontSize: 16.sp,
-              fontFamily: pretendardFont,
+              fontFamily: AppFonts.pretendardFont,
               fontVariations: const [
                 FontVariation('wght', 600),
               ],

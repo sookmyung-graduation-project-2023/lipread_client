@@ -47,7 +47,7 @@ class _ChatScreenState extends State<ChatScreen> {
     final TextStyle textStyle = TextStyle(
       color: AppColor.g800,
       fontSize: 18.sp,
-      fontFamily: pretendardFont,
+      fontFamily: AppFonts.pretendardFont,
       fontVariations: const [
         FontVariation('wght', 600),
       ],

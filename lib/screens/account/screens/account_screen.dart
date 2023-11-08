@@ -24,7 +24,7 @@ class _AccountScreenState extends State<AccountScreen> {
   bool _editName = false;
 
   final TextStyle _settingTextStyle = TextStyle(
-    fontFamily: pretendardFont,
+    fontFamily: AppFonts.pretendardFont,
     fontSize: 16.sp,
     fontVariations: const [
       FontVariation('wght', 600),
@@ -35,7 +35,7 @@ class _AccountScreenState extends State<AccountScreen> {
   final TextStyle _creditCaptionTextStyle = TextStyle(
     color: AppColor.g500,
     fontSize: 14.sp,
-    fontFamily: pretendardFont,
+    fontFamily: AppFonts.pretendardFont,
     fontVariations: const [
       FontVariation('wght', 500),
     ],
@@ -71,7 +71,7 @@ class _AccountScreenState extends State<AccountScreen> {
                             child: Text(
                               "윤재은",
                               style: TextStyle(
-                                fontFamily: pretendardFont,
+                                fontFamily: AppFonts.pretendardFont,
                                 fontSize: 16.sp,
                                 fontVariations: const [
                                   FontVariation('wght', 600),
@@ -123,7 +123,7 @@ class _AccountScreenState extends State<AccountScreen> {
                       child: Text(
                         _editName ? '수정' : '변경',
                         style: TextStyle(
-                          fontFamily: pretendardFont,
+                          fontFamily: AppFonts.pretendardFont,
                           fontSize: 16.sp,
                           fontVariations: const [
                             FontVariation('wght', 700),
@@ -250,7 +250,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     Text(
                       'v1.0',
                       style: TextStyle(
-                        fontFamily: pretendardFont,
+                        fontFamily: AppFonts.pretendardFont,
                         fontSize: 16.sp,
                         fontVariations: const [
                           FontVariation('wght', 600),

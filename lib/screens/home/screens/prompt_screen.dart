@@ -34,7 +34,7 @@ class PromptScreen extends StatelessWidget {
                 style: TextStyle(
                   color: AppColor.g700,
                   fontSize: 16.sp,
-                  fontFamily: pretendardFont,
+                  fontFamily: AppFonts.pretendardFont,
                   fontVariations: const [
                     FontVariation('wght', 700),
                   ],
@@ -75,7 +75,7 @@ class PromptScreen extends StatelessWidget {
                 style: TextStyle(
                   color: AppColor.primary,
                   fontSize: 16.sp,
-                  fontFamily: pretendardFont,
+                  fontFamily: AppFonts.pretendardFont,
                   fontVariations: const [
                     FontVariation('wght', 700),
                   ],
@@ -245,7 +245,7 @@ class PeopleCount extends StatelessWidget {
                   '$count명 사용',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontFamily: pretendardFont,
+                    fontFamily: AppFonts.pretendardFont,
                     fontSize: 14.sp,
                     fontVariations: const [
                       FontVariation('wght', 700),

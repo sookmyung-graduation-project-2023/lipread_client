@@ -9,7 +9,7 @@ class FontStyles {
   static final headline1TextStyle = TextStyle(
     color: AppColor.g900,
     fontSize: 24.sp,
-    fontFamily: pretendardFont,
+    fontFamily: AppFonts.pretendardFont,
     fontVariations: const [
       FontVariation('wght', 700),
     ],
@@ -19,7 +19,7 @@ class FontStyles {
   static final headline2TextStyle = TextStyle(
     color: AppColor.g700,
     fontSize: 18.sp,
-    fontFamily: pretendardFont,
+    fontFamily: AppFonts.pretendardFont,
     fontVariations: const [
       FontVariation('wght', 700),
     ],
@@ -28,7 +28,7 @@ class FontStyles {
   static final headline3TextStyle = TextStyle(
     color: AppColor.g800,
     fontSize: 18.sp,
-    fontFamily: pretendardFont,
+    fontFamily: AppFonts.pretendardFont,
     fontVariations: const [
       FontVariation('wght', 700),
     ],
@@ -37,7 +37,7 @@ class FontStyles {
   static final TextStyle textFieldSingleTextStyle = TextStyle(
     color: AppColor.g700,
     fontSize: 16.sp,
-    fontFamily: pretendardFont,
+    fontFamily: AppFonts.pretendardFont,
     fontVariations: const [
       FontVariation('wght', 600),
     ],
@@ -46,7 +46,7 @@ class FontStyles {
   static final TextStyle textFieldSingleHintTextStyle = TextStyle(
     color: AppColor.g400,
     fontSize: 16.sp,
-    fontFamily: pretendardFont,
+    fontFamily: AppFonts.pretendardFont,
     fontVariations: const [
       FontVariation('wght', 500),
     ],
@@ -55,7 +55,7 @@ class FontStyles {
   static final TextStyle textFieldMultiTextStyle = TextStyle(
     color: AppColor.g700,
     fontSize: 16.sp,
-    fontFamily: pretendardFont,
+    fontFamily: AppFonts.pretendardFont,
     fontVariations: const [
       FontVariation('wght', 600),
     ],
@@ -65,7 +65,7 @@ class FontStyles {
   static final TextStyle textFieldMultiHintTextStyle = TextStyle(
     color: AppColor.g400,
     fontSize: 16.sp,
-    fontFamily: pretendardFont,
+    fontFamily: AppFonts.pretendardFont,
     fontVariations: const [
       FontVariation('wght', 500),
     ],
@@ -75,7 +75,7 @@ class FontStyles {
   static final TextStyle dialogTitleTextStyle = TextStyle(
     color: AppColor.g900,
     fontSize: 18.sp,
-    fontFamily: pretendardFont,
+    fontFamily: AppFonts.pretendardFont,
     fontVariations: const [
       FontVariation('wght', 700),
     ],
@@ -85,7 +85,7 @@ class FontStyles {
   static final TextStyle dialogContentTextStyle = TextStyle(
     color: AppColor.g700,
     fontSize: 16.sp,
-    fontFamily: pretendardFont,
+    fontFamily: AppFonts.pretendardFont,
     fontVariations: const [
       FontVariation('wght', 500),
     ],

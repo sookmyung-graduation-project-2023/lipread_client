@@ -48,14 +48,14 @@ class _BaseScaffoldState extends State<BaseScaffold> {
         unselectedItemColor: AppColor.g400,
         selectedLabelStyle: TextStyle(
           fontSize: 14.sp,
-          fontFamily: pretendardFont,
+          fontFamily: AppFonts.pretendardFont,
           fontVariations: const [
             FontVariation('wght', 700),
           ],
         ),
         unselectedLabelStyle: TextStyle(
           fontSize: 14.sp,
-          fontFamily: pretendardFont,
+          fontFamily: AppFonts.pretendardFont,
           fontVariations: const [
             FontVariation('wght', 500),
           ],

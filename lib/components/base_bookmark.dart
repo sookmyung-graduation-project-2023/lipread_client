@@ -175,7 +175,7 @@ class _BaseBookmarkState extends State<BaseBookmark>
                 widget.text,
                 style: TextStyle(
                     fontSize: 16.sp,
-                    fontFamily: pretendardFont,
+                    fontFamily: AppFonts.pretendardFont,
                     fontVariations: const [
                       FontVariation('wght', 500),
                     ],

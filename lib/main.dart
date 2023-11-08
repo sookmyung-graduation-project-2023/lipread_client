@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lipread_client/components/base_navigationbar.dart';
 import 'package:lipread_client/screens/home/screens/home_screen.dart';
+import 'package:lipread_client/screens/login/screens/login_screen.dart';
 import 'package:lipread_client/utilities/colors.dart';
 import 'package:lipread_client/utilities/fonts.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'LipRead',
             theme: ThemeData(
-              fontFamily: pretendardFont,
+              fontFamily: AppFonts.pretendardFont,
               primaryColor: AppColor.primary,
               primaryColorLight: AppColor.primaryLight,
               scaffoldBackgroundColor: Colors.white,
@@ -37,6 +38,6 @@ class MyApp extends StatelessWidget {
             home: child,
           );
         },
-        child: const BaseScaffold());
+        child: const LoginScreen());
   }
 }

@@ -62,7 +62,7 @@ class BasePrompt extends StatelessWidget {
                     style: TextStyle(
                       color: AppColor.g800,
                       fontSize: 16.sp,
-                      fontFamily: pretendardFont,
+                      fontFamily: AppFonts.pretendardFont,
                       fontVariations: const [
                         FontVariation('wght', 600),
                       ],
@@ -110,7 +110,7 @@ class BasePrompt extends StatelessWidget {
                                 count.toString(),
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontFamily: pretendardFont,
+                                  fontFamily: AppFonts.pretendardFont,
                                   fontSize: 10.sp,
                                   fontVariations: const [
                                     FontVariation('wght', 600),
@@ -152,7 +152,7 @@ class PromptTag extends StatelessWidget {
           text,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontFamily: pretendardFont,
+            fontFamily: AppFonts.pretendardFont,
             fontSize: 12.sp,
             fontVariations: const [
               FontVariation('wght', 600),

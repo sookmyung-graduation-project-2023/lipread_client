@@ -42,7 +42,7 @@ class BaseDialogTextButton extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontFamily: pretendardFont,
+          fontFamily: AppFonts.pretendardFont,
           fontSize: 16.sp,
           fontVariations: const [
             FontVariation('wght', 700),

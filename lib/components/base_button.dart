@@ -35,7 +35,7 @@ class BaseButton extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-          fontFamily: pretendardFont,
+          fontFamily: AppFonts.pretendardFont,
           fontSize: 18.sp,
           fontVariations: const [
             FontVariation('wght', 700),

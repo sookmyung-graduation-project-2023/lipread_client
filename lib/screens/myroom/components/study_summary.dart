@@ -41,7 +41,7 @@ class StudySummary extends StatelessWidget {
                   style: TextStyle(
                     color: AppColor.g600,
                     fontSize: 14.sp,
-                    fontFamily: pretendardFont,
+                    fontFamily: AppFonts.pretendardFont,
                     fontVariations: const [
                       FontVariation('wght', 600),
                     ],
@@ -53,7 +53,7 @@ class StudySummary extends StatelessWidget {
                   style: TextStyle(
                     color: AppColor.g800,
                     fontSize: 32.sp,
-                    fontFamily: pretendardFont,
+                    fontFamily: AppFonts.pretendardFont,
                     fontVariations: const [
                       FontVariation('wght', 700),
                     ],
@@ -75,7 +75,7 @@ class StudySummary extends StatelessWidget {
                   style: TextStyle(
                     color: AppColor.g600,
                     fontSize: 14.sp,
-                    fontFamily: pretendardFont,
+                    fontFamily: AppFonts.pretendardFont,
                     fontVariations: const [
                       FontVariation('wght', 600),
                     ],
@@ -87,7 +87,7 @@ class StudySummary extends StatelessWidget {
                   style: TextStyle(
                     color: AppColor.g800,
                     fontSize: 32.sp,
-                    fontFamily: pretendardFont,
+                    fontFamily: AppFonts.pretendardFont,
                     fontVariations: const [
                       FontVariation('wght', 700),
                     ],

@@ -47,7 +47,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     style: TextStyle(
                       color: AppColor.g400,
                       fontSize: 14.sp,
-                      fontFamily: pretendardFont,
+                      fontFamily: AppFonts.pretendardFont,
                       fontVariations: const [
                         FontVariation('wght', 700),
                       ],
@@ -83,7 +83,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     style: TextStyle(
                       color: AppColor.primary,
                       fontSize: 18.sp,
-                      fontFamily: pretendardFont,
+                      fontFamily: AppFonts.pretendardFont,
                       fontVariations: const [
                         FontVariation('wght', 700),
                       ],

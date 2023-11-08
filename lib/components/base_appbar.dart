@@ -30,7 +30,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
         appBarTitle,
       ),
       titleTextStyle: TextStyle(
-        fontFamily: pretendardFont,
+        fontFamily: AppFonts.pretendardFont,
         fontSize: 18.sp,
         fontVariations: const [
           FontVariation('wght', 600),

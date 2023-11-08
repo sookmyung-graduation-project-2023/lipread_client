@@ -127,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen>
                         labelColor: AppColor.primary,
                         labelStyle: TextStyle(
                           fontSize: 18.sp,
-                          fontFamily: pretendardFont,
+                          fontFamily: AppFonts.pretendardFont,
                           fontVariations: const [
                             FontVariation('wght', 700),
                           ],
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen>
                         unselectedLabelColor: AppColor.g500,
                         unselectedLabelStyle: TextStyle(
                           fontSize: 18.sp,
-                          fontFamily: pretendardFont,
+                          fontFamily: AppFonts.pretendardFont,
                           fontVariations: const [
                             FontVariation('wght', 600),
                           ],
@@ -185,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen>
                               style: TextStyle(
                                 color: AppColor.g600,
                                 fontSize: 14,
-                                fontFamily: pretendardFont,
+                                fontFamily: AppFonts.pretendardFont,
                                 fontVariations: [
                                   FontVariation('wght', 500),
                                 ],

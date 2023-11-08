@@ -41,7 +41,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                 style: TextStyle(
                   color: AppColor.g700,
                   fontSize: 16.sp,
-                  fontFamily: pretendardFont,
+                  fontFamily: AppFonts.pretendardFont,
                   fontVariations: const [
                     FontVariation('wght', 700),
                   ],
@@ -56,7 +56,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                   style: TextStyle(
                     color: AppColor.primary,
                     fontSize: 16.sp,
-                    fontFamily: pretendardFont,
+                    fontFamily: AppFonts.pretendardFont,
                     fontVariations: const [
                       FontVariation('wght', 700),
                     ],
@@ -197,7 +197,7 @@ class Bookmark extends StatelessWidget {
           text,
           style: TextStyle(
               fontSize: 16.sp,
-              fontFamily: pretendardFont,
+              fontFamily: AppFonts.pretendardFont,
               fontVariations: const [
                 FontVariation('wght', 500),
               ],
@@ -256,7 +256,7 @@ class _BookmarkState extends State<Bookmark> {
                     widget.text,
                     style: TextStyle(
                         fontSize: 16.sp,
-                        fontFamily: pretendardFont,
+                        fontFamily: AppFonts.pretendardFont,
                         fontVariations: const [
                           FontVariation('wght', 500),
                         ],
