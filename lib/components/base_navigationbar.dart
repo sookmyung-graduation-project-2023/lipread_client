@@ -61,6 +61,7 @@ class _BaseScaffoldState extends State<BaseScaffold> {
           ],
         ),
         onTap: _onItemTapped,
+        showUnselectedLabels: false,
         items: [
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -70,6 +71,7 @@ class _BaseScaffoldState extends State<BaseScaffold> {
               activeIcon: SvgPicture.asset(
                 width: 24.w,
                 'assets/icons/ic_home_filled.svg',
+                color: AppColor.primary,
               ),
               label: '홈'),
           BottomNavigationBarItem(
@@ -80,6 +82,7 @@ class _BaseScaffoldState extends State<BaseScaffold> {
               activeIcon: SvgPicture.asset(
                 width: 24.w,
                 'assets/icons/ic_assignment_filled.svg',
+                color: AppColor.primary,
               ),
               label: '내 학습방'),
           BottomNavigationBarItem(
@@ -90,6 +93,7 @@ class _BaseScaffoldState extends State<BaseScaffold> {
               activeIcon: SvgPicture.asset(
                 width: 24.w,
                 'assets/icons/ic_account_circle_filled.svg',
+                color: AppColor.primary,
               ),
               label: '계정'),
         ],

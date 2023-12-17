@@ -89,44 +89,57 @@ class BasePrompt extends StatelessWidget {
                           const PromptTag("친구"),
                         ],
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColor.g200,
-                          borderRadius: BorderRadius.circular(4.r),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 6.w, vertical: 3.h),
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(
-                                width: 16.w,
-                                'assets/icons/ic_person.svg',
-                              ),
-                              SizedBox(
-                                width: 2.w,
-                              ),
-                              Text(
-                                count.toString(),
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: AppFonts.pretendardFont,
-                                  fontSize: 10.sp,
-                                  fontVariations: const [
-                                    FontVariation('wght', 600),
-                                  ],
-                                  color: AppColor.g500,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      Usage(count: count),
                     ],
                   ),
                 ],
               ),
             )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Usage extends StatelessWidget {
+  const Usage({
+    super.key,
+    required this.count,
+  });
+
+  final int count;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColor.g200,
+        borderRadius: BorderRadius.circular(4.r),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 3.h),
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              width: 16.w,
+              'assets/icons/ic_person.svg',
+            ),
+            SizedBox(
+              width: 2.w,
+            ),
+            Text(
+              count.toString(),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: AppFonts.pretendardFont,
+                fontSize: 10.sp,
+                fontVariations: const [
+                  FontVariation('wght', 600),
+                ],
+                color: AppColor.g500,
+              ),
+            ),
           ],
         ),
       ),

@@ -45,11 +45,11 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     final TextStyle textStyle = TextStyle(
-      color: AppColor.g800,
-      fontSize: 18.sp,
+      color: AppColor.g900,
+      fontSize: 16.sp,
       fontFamily: AppFonts.pretendardFont,
       fontVariations: const [
-        FontVariation('wght', 600),
+        FontVariation('wght', 500),
       ],
       height: 1.6,
     );
@@ -79,59 +79,43 @@ class _ChatScreenState extends State<ChatScreen> {
           Expanded(
               child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              padding: AppStyles.horizontalEdgeInset,
               child: Column(children: [
                 SizedBox(
                   height: 32.h,
                 ),
-                Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(bottom: 10.h),
-                      decoration: const BoxDecoration(
-                          border: Border(
-                        bottom: BorderSide(
-                          color: AppColor.g300,
-                          width: 1.0,
+                SizedBox(
+                  width: 250.w,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: EdgeInsets.only(bottom: 16.h),
+                          decoration: const BoxDecoration(
+                              color: AppColor.g100,
+                              border: Border(
+                                bottom: BorderSide(width: 1),
+                              )),
+                          child: Text(
+                            "안녕하세요! 어떤 음료와 디저트를 주문하시겠어요?",
+                            style: textStyle,
+                          ),
                         ),
-                      )),
-                      child: Text(
-                        "안녕하세요! 어떤 음료와 디저트를 \n주문하시겠어요?",
-                        style: textStyle,
                       ),
-                    ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    const Row(
-                      children: [
-                        Icon(Icons.play_arrow),
-                        Icon(Icons.bookmark),
-                      ],
-                    )
-                  ],
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      const Row(
+                        children: [
+                          Icon(Icons.play_arrow),
+                          Icon(Icons.bookmark),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 48.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(bottom: 10.h),
-                      decoration: const BoxDecoration(
-                          border: Border(
-                        bottom: BorderSide(
-                          color: AppColor.g300,
-                          width: 1.0,
-                        ),
-                      )),
-                      child: Text(
-                        "아이스라떼 하나 주세요",
-                        style: textStyle,
-                      ),
-                    ),
-                  ],
                 ),
               ]),
             ),

@@ -29,7 +29,7 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
       appBar: const BaseAppBar("주제 생성"),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          padding: AppStyles.horizontalEdgeInset,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

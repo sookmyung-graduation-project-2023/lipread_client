@@ -103,7 +103,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          padding: AppStyles.horizontalEdgeInset,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

@@ -6,11 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String appBarTitle;
+  final String titleText;
+  final TextStyle? titleTextStyle;
   final List<Widget>? actions;
   final int height = 52;
 
-  const BaseAppBar(this.appBarTitle, {super.key, this.actions});
+  const BaseAppBar(
+    this.titleText, {
+    super.key,
+    this.actions,
+    this.titleTextStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +33,17 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0.0,
       title: Text(
-        appBarTitle,
+        titleText,
       ),
-      titleTextStyle: TextStyle(
-        fontFamily: AppFonts.pretendardFont,
-        fontSize: 18.sp,
-        fontVariations: const [
-          FontVariation('wght', 600),
-        ],
-        color: AppColor.g800,
-      ),
+      titleTextStyle: titleTextStyle ??
+          TextStyle(
+            fontFamily: AppFonts.pretendardFont,
+            fontSize: 18.sp,
+            fontVariations: const [
+              FontVariation('wght', 600),
+            ],
+            color: AppColor.g800,
+          ),
     );
   }
 

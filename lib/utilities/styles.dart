@@ -14,7 +14,7 @@ class FontStyles {
       FontVariation('wght', 600),
     ],
     height: 1.5,
-    letterSpacing: -0.2,
+    letterSpacing: -0.5,
   );
 
   static final headline2TextStyle = TextStyle(
@@ -95,6 +95,9 @@ class FontStyles {
 }
 
 class AppStyles {
+  static final horizontalEdgeInset = EdgeInsets.symmetric(
+    horizontal: 20.w,
+  );
   static final OutlineInputBorder textFieldStyle = OutlineInputBorder(
     borderRadius: const BorderRadius.all(Radius.circular(10)).r,
     borderSide: const BorderSide(

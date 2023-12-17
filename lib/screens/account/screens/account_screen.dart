@@ -47,7 +47,7 @@ class _AccountScreenState extends State<AccountScreen> {
       appBar: const BaseAppBar("계정"),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          padding: AppStyles.horizontalEdgeInset,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

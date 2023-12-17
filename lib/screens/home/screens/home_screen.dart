@@ -48,7 +48,12 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        "홈",
+        'LipRead',
+        titleTextStyle: TextStyle(
+          color: AppColor.g800,
+          fontSize: 18.sp,
+          fontFamily: AppFonts.bronovaFont,
+        ),
         actions: <Widget>[
           IconButton(
               icon: const Icon(
@@ -68,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen>
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        padding: AppStyles.horizontalEdgeInset,
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
