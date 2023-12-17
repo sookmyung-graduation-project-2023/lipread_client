@@ -10,6 +10,7 @@ import 'package:lipread_client/utilities/styles.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BasePrompt extends StatelessWidget {
+  final String id;
   final String emoji;
   final String text;
   final List<String> tags;
@@ -17,6 +18,7 @@ class BasePrompt extends StatelessWidget {
 
   const BasePrompt({
     super.key,
+    required this.id,
     required this.emoji,
     required this.text,
     required this.tags,
@@ -29,7 +31,7 @@ class BasePrompt extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const PromptScreen(),
+          builder: (context) => PromptScreen(id),
         ),
       ),
       child: Container(
@@ -56,6 +58,7 @@ class BasePrompt extends StatelessWidget {
             ),
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
                     text,
@@ -73,22 +76,13 @@ class BasePrompt extends StatelessWidget {
                     height: 16.h,
                   ),
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          const PromptTag("파자마 파티"),
-                          SizedBox(
-                            width: 6.w,
-                          ),
-                          const PromptTag("과자"),
-                          SizedBox(
-                            width: 6.w,
-                          ),
-                          const PromptTag("친구"),
-                        ],
-                      ),
+                      Wrap(
+                          spacing: 8.w,
+                          runSpacing: 8.h,
+                          children: List.generate(
+                              tags.length, (index) => PromptTag(tags[index]))),
                       Usage(count: count),
                     ],
                   ),

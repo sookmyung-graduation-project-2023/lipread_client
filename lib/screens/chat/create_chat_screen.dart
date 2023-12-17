@@ -125,10 +125,10 @@ class _CreateChatScreenState extends State<CreateChatScreen> {
               BaseButton(
                   text: "연습 시작하기",
                   onPressed: () {
-                    Navigator.push(
+                    /* Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ChatScreen()));
+                            builder: (context) => const ChatScreen()));*/
                   }),
               SizedBox(
                 height: 40.h,

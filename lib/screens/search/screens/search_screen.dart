@@ -115,13 +115,15 @@ class _SearchScreenState extends State<SearchScreen> {
                       primary: false,
                       itemCount: 8,
                       itemBuilder: (context, index) {
+                        /*
                         final PromptModel prompt = PromptModel();
                         return BasePrompt(
                           emoji: prompt.emoji,
                           count: prompt.count,
                           tags: prompt.tags,
                           text: prompt.subject,
-                        );
+                        );*/
+                        return Text("data");
                       },
                       separatorBuilder: (context, index) {
                         return SizedBox(

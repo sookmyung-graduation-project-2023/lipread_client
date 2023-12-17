@@ -8,6 +8,7 @@ import 'package:lipread_client/components/base_prompt.dart';
 import 'package:lipread_client/models/prompt_model.dart';
 import 'package:lipread_client/screens/chat/create_chat_screen.dart';
 import 'package:lipread_client/screens/search/screens/search_screen.dart';
+import 'package:lipread_client/services/prompt_service.dart';
 import 'package:lipread_client/utilities/colors.dart';
 import 'package:lipread_client/utilities/fonts.dart';
 import 'package:lipread_client/utilities/styles.dart';
@@ -22,6 +23,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
+  late Future<List<PromptModel>> _prompsData;
 
   final _tabs = [
     const Tab(text: "공식"),
@@ -36,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen>
       vsync: this,
       initialIndex: 0,
     );
+    _prompsData = PromptService.getPrompts();
   }
 
   @override
@@ -210,32 +213,45 @@ class _HomeScreenState extends State<HomeScreen>
               ),
             ),
             SliverFillRemaining(
-              child: TabBarView(
-                physics: const ClampingScrollPhysics(),
-                controller: _tabController,
-                children: [
-                  ListView.separated(
-                    physics: const ClampingScrollPhysics(),
-                    shrinkWrap: true,
-                    primary: false,
-                    itemCount: 20,
-                    itemBuilder: (context, index) {
-                      final PromptModel prompt = PromptModel();
-                      return BasePrompt(
-                        emoji: prompt.emoji,
-                        count: prompt.count,
-                        tags: prompt.tags,
-                        text: prompt.subject,
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(
-                        height: 12.h,
-                      );
-                    },
-                  ),
-                  const Center(child: Text('Content for Tab 2')),
-                ],
+              child: FutureBuilder(
+                future: _prompsData,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return const Text('Error');
+                  } else {
+                    final List<PromptModel> prompts = snapshot.data!;
+                    return TabBarView(
+                      physics: const ClampingScrollPhysics(),
+                      controller: _tabController,
+                      children: [
+                        ListView.separated(
+                          physics: const ClampingScrollPhysics(),
+                          shrinkWrap: true,
+                          primary: false,
+                          itemCount: prompts.length,
+                          itemBuilder: (context, index) {
+                            final PromptModel prompt = prompts[index];
+                            return BasePrompt(
+                              id: prompt.id,
+                              emoji: prompt.emoji,
+                              count: prompt.count,
+                              tags: prompt.tags,
+                              text: prompt.subject,
+                            );
+                          },
+                          separatorBuilder: (context, index) {
+                            return SizedBox(
+                              height: 12.h,
+                            );
+                          },
+                        ),
+                        const Center(child: Text('Content for Tab 2')),
+                      ],
+                    );
+                  }
+                },
               ),
             ),
             SliverToBoxAdapter(

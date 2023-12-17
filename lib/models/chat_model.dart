@@ -1,5 +1,12 @@
 class ChatModel {
-  final String chatId = "1234564";
-  final String text = "어떻게 주문하시겠어요? 저희는 두 가지 메뉴가 있어요.";
-  final String vedioUrl = "url";
+  final String id;
+  final String text;
+  final String role;
+  final String videoUrl;
+
+  ChatModel.fromJson(Map<String, dynamic> json)
+      : id = json["chatID"] ?? "none",
+        text = json["text"] ?? "none",
+        role = json["role"] ?? "none",
+        videoUrl = json["videoUrl"] ?? "none";
 }

@@ -9,15 +9,34 @@ import 'package:lipread_client/components/base_dialog_text_button.dart';
 import 'package:lipread_client/components/base_emptydata.dart';
 import 'package:lipread_client/components/base_prompt.dart';
 import 'package:lipread_client/components/base_tag.dart';
+import 'package:lipread_client/models/chat_model.dart';
 import 'package:lipread_client/models/prompt_model.dart';
+import 'package:lipread_client/screens/chat/chat_screen.dart';
+import 'package:lipread_client/services/prompt_service.dart';
 import 'package:lipread_client/utilities/colors.dart';
 import 'package:lipread_client/utilities/fonts.dart';
 import 'package:lipread_client/utilities/styles.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class PromptScreen extends StatelessWidget {
-  const PromptScreen({super.key});
+class PromptScreen extends StatefulWidget {
+  final String id;
+
+  const PromptScreen(this.id, {super.key});
+
+  @override
+  State<PromptScreen> createState() => _PromptScreenState();
+}
+
+class _PromptScreenState extends State<PromptScreen> {
+  late Future<PromptModel> _promptData;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _promptData = PromptService.getPromptById(widget.id, true);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,101 +131,132 @@ class PromptScreen extends StatelessWidget {
               }),
         ],
       ),
-      floatingActionButton: BaseButton(
-        text: "이 템플릿으로 구화 연습하기",
-        onPressed: () {},
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: AppStyles.horizontalEdgeInset,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(
-                height: 28.h,
-              ),
-              Column(
-                children: [
-                  Text(
-                    "🍪",
-                    style: TextStyle(fontSize: 36.sp),
-                  ),
-                  SizedBox(
-                    height: 12.h,
-                  ),
-                  const PeopleCount(
-                    count: 11,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 24.h,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                    color: AppColor.g200,
-                  ),
-                  borderRadius: BorderRadius.all(const Radius.circular(10.0).r),
-                ),
-                padding: EdgeInsets.symmetric(
-                  vertical: 36.h,
-                  horizontal: 24.w,
-                ),
-                child: Column(children: [
-                  TextContent(
-                    title: "나의 역할",
-                    content: Text(
-                      "파자마 파티에 초대된 사람",
-                      style: FontStyles.textFieldMultiTextStyle,
+      body: FutureBuilder(
+        future: _promptData,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return const Text('Error');
+          } else {
+            final PromptModel prompt = snapshot.data!;
+
+            return SingleChildScrollView(
+              child: Padding(
+                padding: AppStyles.horizontalEdgeInset,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SizedBox(
+                      height: 28.h,
                     ),
-                  ),
-                  margin,
-                  TextContent(
-                    title: "상대방의 역할",
-                    content: Text(
-                      "친구",
-                      style: FontStyles.textFieldMultiTextStyle,
+                    Text(
+                      prompt.emoji,
+                      style: TextStyle(fontSize: 32.sp),
                     ),
-                  ),
-                  margin,
-                  TextContent(
-                    title: "주제 및 상황",
-                    content: Text(
-                      "친구의 파자마 파티에서 같이 과자를 먹기로 했는데 내가 과자를 사오지 않았다. 친구는 나에게 질책을 하고 나는 친구에게 사과를 한다.",
-                      style: FontStyles.textFieldMultiTextStyle,
+                    SizedBox(
+                      height: 8.h,
                     ),
-                  ),
-                  margin,
-                  TextContent(
-                    title: "키워드",
-                    content: Wrap(
-                      spacing: 8.w,
-                      runSpacing: 8.h,
-                      children: const [
-                        BaseTag("파자마 파티"),
-                        BaseTag("파자마 파티"),
-                        BaseTag("친구"),
-                        BaseTag("키워드"),
-                        BaseTag("과자"),
+                    Text(
+                      prompt.subject,
+                      style: TextStyle(
+                          color: AppColor.g800,
+                          fontSize: 24.sp,
+                          fontFamily: AppFonts.pretendardFont,
+                          fontVariations: const [
+                            FontVariation('wght', 500),
+                          ],
+                          height: 1.6),
+                    ),
+                    SizedBox(
+                      height: 16.h,
+                    ),
+                    Row(
+                      children: [
+                        Text("by ${prompt.creatdBy} | ${prompt.count}명 사용")
                       ],
                     ),
-                  ),
-                  margin,
-                  const TextContent(
-                    title: "히스토리",
-                    content: Text("dfas"),
-                  ),
-                ]),
+                    SizedBox(
+                      height: 40.h,
+                    ),
+                    Text(
+                      "역할",
+                      style: FontStyles.headline3TextStyle,
+                    ),
+                    SizedBox(
+                      height: 16.h,
+                    ),
+                    Role(
+                      role: "나",
+                      content: prompt.userRole,
+                    ),
+                    SizedBox(
+                      height: 12.h,
+                    ),
+                    Role(
+                      role: "상대방",
+                      content: prompt.assistantRole,
+                    ),
+                    margin,
+                    Text(
+                      "키워드",
+                      style: FontStyles.headline3TextStyle,
+                    ),
+                    SizedBox(
+                      height: 16.h,
+                    ),
+                    Wrap(
+                        spacing: 8.w,
+                        runSpacing: 8.h,
+                        children: List.generate(prompt.tags.length,
+                            (index) => BaseTag(prompt.tags[index]))),
+                    margin,
+                    Text(
+                      "대화 내용",
+                      style: FontStyles.headline3TextStyle,
+                    ),
+                    SizedBox(
+                      height: 16.h,
+                    ),
+                    ListView.separated(
+                        shrinkWrap: true,
+                        primary: false,
+                        itemBuilder: (context, index) {
+                          return Chat(
+                              role: prompt.chats[index].role,
+                              text: prompt.chats[index].text);
+                        },
+                        separatorBuilder: (context, index) {
+                          return SizedBox(
+                            height: 20.h,
+                          );
+                        },
+                        itemCount: prompt.chats.length),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    BaseButton(
+                      text: "이 템플릿으로 구화 연습하기",
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ChatScreen(
+                                justRead: true,
+                                id: prompt.chatId,
+                              ),
+                            ));
+                      },
+                    ),
+                    SizedBox(
+                      height: 100.h,
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(
-                height: 120.h,
-              )
-            ],
-          ),
-        ),
+            );
+          }
+        },
       ),
     );
   }
@@ -262,39 +312,130 @@ class PeopleCount extends StatelessWidget {
   }
 }
 
-class TextContent extends StatelessWidget {
-  final String title;
-  final Widget content;
+class Role extends StatelessWidget {
+  final String role;
+  final String content;
 
-  const TextContent({
+  const Role({
     super.key,
-    required this.title,
+    required this.role,
     required this.content,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Container(
+      padding:
+          EdgeInsets.only(top: 24.h, bottom: 24.h, left: 24.w, right: 24.w),
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 1,
+          color: AppColor.g200,
+        ),
+        borderRadius: BorderRadius.all(const Radius.circular(12.0).r),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          role == '나'
+              ? ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0).r,
+                  child: Image.asset(
+                    'assets/images/me_example.png',
+                    width: 40.w,
+                  ),
+                )
+              : ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0).r,
+                  child: Image.asset(
+                    'assets/images/assistant_example.png',
+                    width: 40.w,
+                  ),
+                ),
+          SizedBox(
+            width: 20.w,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  role,
+                  style: TextStyle(
+                    color: AppColor.g500,
+                    fontSize: 12.sp,
+                    fontFamily: AppFonts.pretendardFont,
+                    fontVariations: const [
+                      FontVariation('wght', 500),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 4.h,
+                ),
+                Text(
+                  content,
+                  style: TextStyle(
+                    color: AppColor.g800,
+                    height: 1.6,
+                    fontSize: 16.sp,
+                    fontFamily: AppFonts.pretendardFont,
+                    fontVariations: const [
+                      FontVariation('wght', 500),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Chat extends StatelessWidget {
+  final String role;
+  final String text;
+  const Chat({
+    super.key,
+    required this.role,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
       children: [
-        Text(
-          title,
-          style: FontStyles.headline3TextStyle,
-        ),
+        role == 'user'
+            ? ClipRRect(
+                borderRadius: BorderRadius.circular(8.0).r,
+                child: Image.asset(
+                  'assets/images/me_example.png',
+                  width: 36.w,
+                ),
+              )
+            : ClipRRect(
+                borderRadius: BorderRadius.circular(8.0).r,
+                child: Image.asset(
+                  'assets/images/assistant_example.png',
+                  width: 36.w,
+                ),
+              ),
         SizedBox(
-          height: 16.h,
+          width: 16.w,
         ),
-        content,
-        SizedBox(
-          height: 16.h,
-        ),
-        const DottedLine(
-          lineLength: double.infinity,
-          lineThickness: 1,
-          dashLength: 2.0,
-          dashColor: AppColor.g300,
-          dashRadius: 0.0,
-        ),
+        Expanded(
+            child: Container(
+                padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 24.w),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1,
+                    color: AppColor.g200,
+                  ),
+                  borderRadius: BorderRadius.all(const Radius.circular(12.0).r),
+                ),
+                child: Text(text))),
       ],
     );
   }

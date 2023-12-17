@@ -7,6 +7,8 @@ class AppColor {
   static const primaryLight = Color(0xffFFF9F8);
   static const secondary = Color(0xffFF9B26);
   static const secondaryLight = Color(0xffFFF4E7);
+  static const blue = Color(0xff197AFF);
+  static const blueLight = Color(0xffF4F9FF);
 
   // gray scale
   static const g100 = Color(0xffF9FBFE);

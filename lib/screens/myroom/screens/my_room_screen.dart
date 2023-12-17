@@ -97,13 +97,15 @@ class MyRoomScreen extends StatelessWidget {
                       primary: false,
                       itemCount: 8,
                       itemBuilder: (context, index) {
+                        /*
                         final PromptModel prompt = PromptModel();
                         return BasePrompt(
                           emoji: prompt.emoji,
                           count: prompt.count,
                           tags: prompt.tags,
                           text: prompt.subject,
-                        );
+                        );*/
+                        return Text("dsf");
                       },
                       separatorBuilder: (context, index) {
                         return SizedBox(
